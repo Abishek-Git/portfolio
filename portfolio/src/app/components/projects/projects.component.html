@@ -1,0 +1,25 @@
+<section id="projects" class="section projects">
+  <div class="container">
+    <h2 class="section-title" appScrollReveal>
+      <span class="section-number">04.</span> Projects
+    </h2>
+    <div class="projects-grid">
+      @for (project of data.projects; track project.title; let i = $index) {
+        <div class="project-card" appScrollReveal [revealDelay]="i * 150">
+          <div class="project-icon">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-desc">{{ project.description }}</p>
+          <div class="project-tech">
+            @for (tech of project.techStack; track tech) {
+              <span>{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

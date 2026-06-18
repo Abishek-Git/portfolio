@@ -1,0 +1,39 @@
+<section id="about" class="section about">
+  <div class="container">
+    <h2 class="section-title" appScrollReveal>
+      <span class="section-number">01.</span> About Me
+    </h2>
+    <div class="about-grid">
+      <div class="about-text" appScrollReveal revealDirection="left">
+        <p>{{ data.summary }}</p>
+        <div class="about-details">
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">{{ data.location }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <a [href]="'mailto:' + data.email" class="detail-value clickable">{{ data.email }}</a>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Experience</span>
+            <span class="detail-value">5+ Years</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-education" appScrollReveal revealDirection="right">
+        <h3>Education</h3>
+        @for (edu of data.education; track edu.degree) {
+          <div class="edu-card">
+            <h4>{{ edu.degree }}</h4>
+            <p class="edu-institution">{{ edu.institution }}</p>
+            <div class="edu-meta">
+              <span>{{ edu.period }}</span>
+              <span class="edu-grade">{{ edu.grade }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

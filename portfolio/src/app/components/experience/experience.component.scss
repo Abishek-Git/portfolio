@@ -1,0 +1,147 @@
+.experience {
+  background: var(--bg-secondary);
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 40px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--accent) 10%,
+      var(--accent) 90%,
+      transparent
+    );
+    opacity: 0.3;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 2.5rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -33px;
+  top: 1.8rem;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border: 3px solid var(--bg-secondary);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 15px var(--accent-shadow);
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: all 0.3s;
+  position: relative;
+
+  /* Arrow pointing to timeline dot */
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 1.8rem;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transform: rotate(45deg);
+    transition: border-color 0.3s;
+  }
+
+  &:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+    box-shadow: 0 8px 30px var(--accent-shadow);
+
+    &::before {
+      border-color: var(--accent);
+    }
+  }
+}
+
+.timeline-header {
+  margin-bottom: 1rem;
+
+  h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+}
+
+.company {
+  display: block;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.period {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+}
+
+.timeline-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+
+  li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    &::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.timeline-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-tag {
+  padding: 0.25rem 0.6rem;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+}
