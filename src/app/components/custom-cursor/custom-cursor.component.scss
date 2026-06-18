@@ -1,0 +1,208 @@
+:host {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+/* ===== Dot + Ring ===== */
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.15s;
+  z-index: 10001;
+  pointer-events: none;
+
+  &.clicking {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, opacity 0.3s;
+  opacity: 0.5;
+  z-index: 10000;
+
+  &.hovering {
+    width: 52px;
+    height: 52px;
+    opacity: 0.3;
+    border-color: var(--accent-light);
+  }
+
+  &.clicking {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+  }
+}
+
+/* ===== Spotlight ===== */
+.cursor-spotlight {
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(74, 158, 255, 0.28) 0%,
+    rgba(74, 158, 255, 0.15) 35%,
+    rgba(74, 158, 255, 0.05) 60%,
+    transparent 80%
+  );
+  border: 1px solid rgba(74, 158, 255, 0.18);
+  box-shadow: 0 0 30px rgba(74, 158, 255, 0.15);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.3s;
+  z-index: 10000;
+
+  &.hovering {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(
+      circle,
+      rgba(74, 158, 255, 0.35) 0%,
+      rgba(74, 158, 255, 0.18) 35%,
+      rgba(74, 158, 255, 0.06) 60%,
+      transparent 80%
+    );
+    box-shadow: 0 0 40px rgba(74, 158, 255, 0.2);
+  }
+
+  &.clicking {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ===== Trail ===== */
+.trail-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  display: none;
+}
+
+/* ===== Cursor Picker ===== */
+.cursor-picker {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 10002;
+  pointer-events: all;
+}
+
+.picker-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+}
+
+.picker-menu {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 150px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  animation: picker-in 0.2s ease;
+}
+
+@keyframes picker-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.picker-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer !important;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+
+  &.active {
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-weight: 600;
+  }
+}
+
+.picker-icon {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.picker-label {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring,
+  .cursor-spotlight,
+  .cursor-trail-dot {
+    display: none;
+  }
+
+  .cursor-picker {
+    display: none;
+  }
+}

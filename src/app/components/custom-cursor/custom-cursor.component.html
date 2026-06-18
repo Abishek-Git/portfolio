@@ -1,0 +1,41 @@
+<!-- Trail canvas -->
+<canvas #trailCanvas class="trail-canvas"></canvas>
+
+<!-- Main dot cursor -->
+@if (cursor.cursorType() !== 'none' && cursor.cursorType() !== 'spotlight') {
+  <div #dotEl class="cursor-dot"></div>
+}
+
+<!-- Ring (dot-ring mode) -->
+@if (cursor.cursorType() === 'dot-ring') {
+  <div #ringEl class="cursor-ring"></div>
+}
+
+<!-- Spotlight -->
+@if (cursor.cursorType() === 'spotlight') {
+  <div #ringEl class="cursor-spotlight"></div>
+}
+
+<!-- Cursor picker -->
+<div class="cursor-picker">
+  <button class="picker-toggle" (click)="togglePicker()" aria-label="Change cursor style">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>
+      <path d="M13 13l6 6"/>
+    </svg>
+  </button>
+  @if (pickerOpen) {
+    <div class="picker-menu">
+      @for (opt of cursorOptions; track opt.type) {
+        <button
+          class="picker-option"
+          [class.active]="cursor.cursorType() === opt.type"
+          (click)="selectCursor(opt.type)"
+        >
+          <span class="picker-icon">{{ opt.icon }}</span>
+          <span class="picker-label">{{ opt.label }}</span>
+        </button>
+      }
+    </div>
+  }
+</div>

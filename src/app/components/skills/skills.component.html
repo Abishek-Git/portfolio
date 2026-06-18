@@ -1,0 +1,35 @@
+<section id="skills" class="section skills">
+  <div class="container">
+    <h2 class="section-title" appScrollReveal>
+      <span class="section-number">02.</span> Skills & Tech Stack
+    </h2>
+
+    <div class="skill-filters" appScrollReveal>
+      @for (cat of categories; track cat.key) {
+        <button
+          class="filter-btn clickable"
+          [class.active]="activeFilter() === cat.key"
+          (click)="activeFilter.set(cat.key)"
+        >
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <div class="skills-grid">
+      @for (skill of filteredSkills(); track skill.name; let i = $index) {
+        <div
+          class="skill-card"
+          appScrollReveal
+          [revealDelay]="i * 50"
+        >
+          <div class="skill-icon" [innerHTML]="getSkillIcon(skill.name)"></div>
+          <div class="skill-info">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-category">{{ getCategoryLabel(skill.category) }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
