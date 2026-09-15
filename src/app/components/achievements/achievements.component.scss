@@ -36,8 +36,6 @@
 .achievement-marquee {
   overflow: hidden;
   flex: 1;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   padding: 1rem 0;
 }
 
@@ -45,21 +43,6 @@
   display: flex;
   gap: 2rem;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
-
-  &:hover,
-  &.paused {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 .achievement-card {
